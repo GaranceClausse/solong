@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:21:20 by gclausse          #+#    #+#             */
-/*   Updated: 2022/01/21 13:16:41 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:20:06 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <sys/wait.h>
+
+#define BUFFER_SIZE 10
 
 int		ft_strlen(char *str);
 char	*ft_strjoin(char *s1, char *s2);
