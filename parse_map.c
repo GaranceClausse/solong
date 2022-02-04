@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:26:52 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/04 16:38:20 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:49:51 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	verify_filename(char *mapfile)
 	int	len;
 
 	len = ft_strlen(mapfile);
-	if (len < 6)
+	if (len < 5)
 		return (1);
 	if (mapfile[len - 4] == '.' && mapfile[len - 3] == 'b'
 		&& mapfile[len - 2] == 'e' && mapfile[len - 1] == 'r')
@@ -95,7 +95,7 @@ int	valid_map(char *mapfile)
 int	verify_map(char *mapfile)
 {
 	if (verify_filename(mapfile) != 0)
-		return (error(2, "file type should be .ber"));
+		return (error(2, "file type should be *.ber"));
 	if (valid_map(mapfile) != 0)
 		return (error(3, "Map isn't valid"));
 	return (0);
