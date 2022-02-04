@@ -6,11 +6,11 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:22:55 by gclausse          #+#    #+#             */
-/*   Updated: 2022/01/31 15:15:49 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:04:27 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*get_one_line(char *cpy)
 {
@@ -130,20 +130,3 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int   main(int ac, char **av)
-{
-  int   fd1;
-  int	i;
-  
-  i = 0;
-  if (ac)
-  {
- 	 fd1 = open(av[1], O_RDONLY);
- 	 while (i < 54)
-  	{
- 	 	printf("ligne %d = %s", i, get_next_line(fd1));
-  		i++;
-	}
-  }	
-	  return (0);
-}

@@ -6,16 +6,21 @@
 #    By: gclausse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 11:38:35 by gclausse          #+#    #+#              #
-#    Updated: 2022/01/31 12:45:13 by gclausse         ###   ########.fr        #
+#    Updated: 2022/02/04 16:40:44 by gclausse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME    =    so_long
 
-SRCS    = so_long.c
+SRCS    = so_long.c \
+	  parse_map.c
 
 OBJS    =    ${SRCS:.c=.o}
 
-CC        =    clang
+
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+CC        =    gcc
 #CC        =    clang-9
 RM        =    rm -f
 CFLAGS    =    -Wall -Werror -Wextra
@@ -25,31 +30,35 @@ MLX        = ./mlx_linux
 
 MLX_LIB = ./mlx_linux/libmlx_Linux.a
 
-INCL    =    includes
-
-.c.o:
-	${CC} ${CFLAGS} -I${INCL} -I${MLX} -g3 -c $< -o ${<:.c=.o}
-
-$(NAME):	${OBJS} $(MLX_LIB)
-	${CC} ${CFLAGS}  ${OBJS} -o ${NAME} ${MLX_LIB}\
-		-L -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-
-$(MLX_LIB):
-	make -C ${MLX} -j
-
+LIBFT= ./libft/libft.a
 
 all:        ${NAME}
+
+$(NAME): $(LIBFT) $(MLX_LIB) $(OBJS)
+	$(CC) $(addprefix ,$(SRCS)) $(CFLAGS) -I . -g3 -Lmlx_Linux -lmlx_Linux -L ./mlx_linux -Imlx_Linux -L ./libft -lft -lXext -lX11 -lm -lz -o $(NAME)	
+
+$(MLX_LIB):
+	cd ./mlx_linux && ./configure
+
+$(LIBFT):
+	make -C libft
+	
 
 clean:
 	${RM} ${OBJS}
 	make clean -C ${MLX}
+	make clean -C libft
 
 fclean:        clean
 	${RM} ${NAME}
+	make fclean -C libft
 	${RM} ${NAME} ${MLX_LIB}
 
 re:            fclean
 	$(MAKE) all -j
+
+teste: all
+	./$(NAME) "./assets/maps/map_3.ber"
 
 .PHONY:        all clean fclean re
 

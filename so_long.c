@@ -11,25 +11,12 @@
 
 #include "so_long.h"
 #include "mlx_linux/mlx.h"
-
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
+/*
 int	close(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
-}
+}*/
 
 int	create_trgb(int t, int r, int g, int b)
 {
@@ -62,10 +49,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-
+/*
 int	main(void)
 {
-	/*
+	
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
@@ -77,7 +64,7 @@ int	main(void)
 								&img.endian);
 	my_mlx_pixel_put(&img, 100, 100, 0x00FF0000);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);*/
+	mlx_loop(mlx);
 
 	t_vars	vars;
 
@@ -85,4 +72,4 @@ int	main(void)
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
 	mlx_loop(vars.mlx);
-}
+}*/

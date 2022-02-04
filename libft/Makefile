@@ -6,7 +6,7 @@
 #    By: gclausse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 11:13:42 by gclausse          #+#    #+#              #
-#    Updated: 2022/01/31 15:04:50 by gclausse         ###   ########.fr        #
+#    Updated: 2022/02/04 14:24:50 by gclausse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,6 @@ SRC= ft_isalpha.c\
 	 ft_putnbr_usgn_lg.c\
 	 ft_printf.c \
 	get_next_line.c \
-	get_next_line_utils.c
 	
 NAME= libft.a
 
