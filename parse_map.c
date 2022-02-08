@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:26:52 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/04 16:49:51 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:50:30 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	error(int n, char *str)
 
 int	close(t_vars *vars)
 {
+	mlx_loop_end(vars->mlx);
 	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	//mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
 }
 
@@ -67,27 +71,45 @@ int	valid_map(char *mapfile)
 		return (error(1, "Couldn't open the file"));
 	line = get_next_line(fd);
 	len = ft_strlen(line);
+	printf("%s", line);
 	if (check_first_last_line(line) != 0)
+	{
+		free(line);
 		return (1);
-	j = 5;
+	}
+	j = 4;
+	free(line);
 	while (j-- > 1)
 	{
+
 		i = 0;
 		line = get_next_line(fd);
+		printf("%s", line);
+
 		while (line[i++] != '\n')
 		{
 			if(line[i] != '1' && line[i] != '0' &&line[i] != 'E' && line[i] != 'P' && line[i] != 'C' && line[i] != '\n')
+			{
+				free(line);
 				return (1);
+			}
 			if (line[i] == 'E')
 				exit++;
 		}
-		if (line[0] != '1' || line[ft_strlen(line) - 2] != '1')
+		if (line[0] != '1' || line[ft_strlen(line) - 2] != '1' || i != len)
+		{
+			free(line);
 			return (1);
-		if (i != len)
-			return (1);
+		}
+		free(line);
 	}
+	line = get_next_line(fd);
 	if (check_first_last_line(line) != 0 || exit != 1)
+	{
+		free(line);
 		return (1);
+	}
+	free(line);
 	return (0);
 
 }
@@ -110,13 +132,13 @@ int	main(int argc, char **argv)
 			/*start_game(module);
 			hook(module);
 			mlx_loop(module->vars->mlx);*/
-			t_vars	vars;
-	
-			vars.mlx = mlx_init();
-			vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-			mlx_hook(vars.win, 2, 1L<<0, close, &vars);
-			mlx_loop(vars.mlx);
-			printf("map o");
+		//	t_vars	vars;
+	//
+	//		vars.mlx = mlx_init();
+	//		vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	//		mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+	//		mlx_loop(vars.mlx);
+			printf("map ok");
 		}
 		else
 		{

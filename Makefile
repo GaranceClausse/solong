@@ -6,7 +6,7 @@
 #    By: gclausse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 11:38:35 by gclausse          #+#    #+#              #
-#    Updated: 2022/02/04 16:40:44 by gclausse         ###   ########.fr        #
+#    Updated: 2022/02/08 18:04:05 by gclausse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME    =    so_long
@@ -17,7 +17,7 @@ SRCS    = so_long.c \
 OBJS    =    ${SRCS:.c=.o}
 
 
-%.o: %.c
+%.o: %.c libft/*.c
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 CC        =    gcc

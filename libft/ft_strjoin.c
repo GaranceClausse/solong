@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:15:32 by gclausse          #+#    #+#             */
-/*   Updated: 2022/01/12 11:45:33 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:29:22 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j])
 		cpy[i++] = s2[j++];
 	cpy[i] = '\0';
-	free (s1);
+	free(s1);
 	return (cpy);
 }
