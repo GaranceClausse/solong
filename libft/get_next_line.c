@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:22:55 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/08 18:16:04 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:26:55 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,24 @@ static char	*save_cpy(char *cpy)
 	i = 0;
 	while (cpy[i] && cpy[i] != '\n')
 		i++;
-	if (cpy[i] == '\0')
+	if ((cpy[i] == '\n' && cpy[i + 1] == '\0') || cpy[i] == '\0')
+	{
+		free(cpy);
+		return (NULL);
+	}
+	str = malloc(sizeof(char) * (ft_strlen(cpy) - i));
+	if (!str)
 	{
 		free(cpy);
 		return (NULL);
 	}
 	if (cpy[i] == '\n')
 		i++;
-	str = malloc(sizeof(char) * (ft_strlen(cpy) - i + 1));
-	if (!str)
-	{
-		free (cpy);
-		return (NULL);
-	}
 	j = 0;
-	while (cpy[i])
+	while (cpy[i] != '\0')
 		str[j++] = cpy[i++];
 	str[j] = '\0';
 	free(cpy);
-	printf("pointeuur = %p, valeuur = %s\n", str, str);
 	return (str);
 }
 
@@ -84,7 +83,7 @@ static int	is_a_line(char *str)
 		return (0);
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (str[i] == '\n')
+	if (str[i] && str[i] == '\n')
 		return (1);
 	else
 		return (0);
@@ -125,6 +124,7 @@ char	*get_next_line(int fd)
 	cpy = read_file(fd, cpy);
 	if (!cpy)
 		return (NULL);
+	
 	line = get_one_line(cpy);
 	if (!line)
 	{
@@ -134,4 +134,3 @@ char	*get_next_line(int fd)
 	cpy = save_cpy(cpy);
 	return (line);
 }
-
