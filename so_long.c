@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:13:22 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 12:13:45 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:46:28 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int	get_b(int trgb)
 {
 	return (trgb & 0xFF);
 }
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+/*
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-/*
+
 int	main(void)
 {
 	

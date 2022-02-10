@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:51:35 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 17:15:20 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:49:02 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-typedef struct	s_data {
+typedef struct	s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -26,23 +26,23 @@ typedef struct	s_data {
 	int		endian;
 	int		h;
 	int		w;
-}				t_data;
-/*
+}				t_img;
+
 typedef struct s_txt {
 	t_img	floor;
 	t_img	wall;
 	t_img	collect;
 	t_img	exit;
 	t_img	player;
-}				t_txt;*/
+}				t_txt;
 
-typedef struct	s_vars {
+typedef struct	s_data {
 	void	*mlx;
 	void	*win;
-//	t_txt	txt;
+	t_txt	txt;
 	int		x;
 	int		y;
-}				t_vars;
+}				t_data;
 
 typedef struct	s_mapinfo {
 	int	line_count;
@@ -54,13 +54,20 @@ typedef struct	s_mapinfo {
 	int	y;
 }				t_mapinfo;
 
-int	close_map(t_vars *vars);
+typedef struct s_combo {
+	t_data	*mlx;
+	t_mapinfo	*mapinfo;
+	char	**map;
+	int		count;
+}				t_combo;
+
+int	close_map(t_data *data);
 int	create_trgb(int t, int r, int g, int b);
 int	get_t(int trgb);
 int	get_r(int trgb);
 int	get_g(int trgb);
 int	get_b(int trgb);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 //check map utils
 int	check_collect_exit(char **tab_map);
@@ -79,5 +86,7 @@ int	valid_map(char **tab_map, t_mapinfo *mapinfo);
 void	free_all(char **tab_map);
 int	error(int n, char *str);
 void	void_error(char **tab_map);
+
+void	display_map(char **tab_map, t_mapinfo mapinfo);
 
 #endif

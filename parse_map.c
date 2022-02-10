@@ -6,20 +6,20 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:26:52 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 17:33:53 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:49:35 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	close_map(t_vars *vars)
+int	close_map(t_data *data)
 {
-	mlx_destroy_image(vars->mlx, vars->win);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
-	free(vars->win);
-	mlx_loop_end(vars->mlx);
+	mlx_destroy_image(data->mlx, data->win);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	free(data->win);
+	mlx_loop_end(data->mlx);
 
 	//mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
@@ -56,6 +56,7 @@ int	main(int argc, char **argv)
 		return (error(3, "couldn't open the file"));
 	tab_map = get_map(fd, tab_map, &mapinfo);
 		printf("map ok");
+	display_map(tab_map, mapinfo);
 	free_all(tab_map);
 
 //	{
