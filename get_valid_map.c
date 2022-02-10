@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:02:50 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 12:12:36 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:01:47 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,45 @@ int	map_size(char *mapfile)
 	return (cpt);
 }
 
-char	**get_map(char *mapfile)
+char	**create_map(int fd,  t_mapinfo *mapinfo)
 {
-	int		fd;
-	int		i;
 	char	**tab_map;
+	char	*line;
 
-	i = 0;
-	tab_map = malloc(sizeof(char *) * (map_size(mapfile) + 1));
-	fd = open(mapfile, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
-	while (i < 5)
+	tab_map = NULL;
+	line = get_next_line(fd);
+	if (!line || line[0] == '\0')
+	{
+		free(line);
+		void_error();
+	}
+	mapinfo->line_len = ft_strlen(line);
+	while (line)
+	{
+		free(line);
+		(mapinfo->line_count)++;
+		line = get_next_line(fd);
+	}
+	tab_map = malloc(sizeof(char *) * ((mapinfo->line_count + 1)));
+	if (!tab_map)
+		void_error();
+	return (tab_map);
+}
+
+
+
+char	**get_map(int fd, char **tab_map, t_mapinfo *mapinfo)
+{
+	int		i;
+
+	tab_map[0] = get_next_line(fd);
+	if (!tab_map[0])
+	{
+		free_all(tab_map);
+		void_error();
+	}
+	i = 1;
+	while (i < mapinfo->line_count)
 	{
 		tab_map[i] = get_next_line(fd);
 		i++;
@@ -58,28 +85,17 @@ char	**get_map(char *mapfile)
 	return (tab_map);
 }
 
-int	valid_map(char *mapfile)
+int	valid_map(char **tab_map, t_mapinfo *mapinfo)
 {
-	char	**tab_map;
-
-	tab_map = get_map(mapfile);
 	if (check_first_last_line(tab_map[0]) != 0
-		|| check_first_last_line(tab_map[4]) != 0
-		|| check_exit_player(tab_map) != 0
+		|| check_first_last_line(tab_map[mapinfo->line_count - 1]) != 0
+		|| check_player(tab_map) != 0
+		|| check_collect_exit(tab_map) != 0
 		|| check_letters(tab_map) != 0)
 	{
 		free_all(tab_map);
-		return (1);
+		return (error(3, "Map isn't valid"));
 	}
 	free_all(tab_map);
-	return (0);
-}
-
-int	verify_map(char *mapfile)
-{
-	if (verify_filename(mapfile) != 0)
-		return (error(2, "file type should be *.ber"));
-	if (valid_map(mapfile) != 0)
-		return (error(3, "Map isn't valid"));
 	return (0);
 }
