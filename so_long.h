@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:51:35 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/09 13:08:44 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 12:07:47 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,21 @@ int	get_r(int trgb);
 int	get_g(int trgb);
 int	get_b(int trgb);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+//check map utils
+int	check_exit_player(char **tab_map);
+int	check_letters(char **tab_map);
+int	check_first_last_line(char *line);
+int	verify_filename(char *mapfile);
+
+//get valid map
+int	map_size(char *mapfile);
+char	**get_map(char *mapfile);
+int	valid_map(char *mapfile);
+int	verify_map(char *mapfile);
+
+//errors
+void	free_all(char **tab_map);
+int	error(int n, char *str);
 
 #endif
