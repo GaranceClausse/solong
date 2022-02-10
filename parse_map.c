@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:26:52 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 16:36:27 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:33:53 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,13 @@ int	main(int argc, char **argv)
 	if (fd == -1)
 		return (error(3, "couldn't open the file"));
 	tab_map = create_map(fd, &mapinfo);
-	if (!tab_map)
-		return (0);
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		return (error(3, "couldn't open the file"));
 	tab_map = get_map(fd, tab_map, &mapinfo);
-	if (valid_map(tab_map, &mapinfo) == 0)
 		printf("map ok");
+	free_all(tab_map);
 
 //	{
 		/*start_game(module);

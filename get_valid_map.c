@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:02:50 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 17:01:47 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:33:50 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**create_map(int fd,  t_mapinfo *mapinfo)
 	if (!line || line[0] == '\0')
 	{
 		free(line);
-		void_error();
+		void_error(tab_map);
 	}
 	mapinfo->line_len = ft_strlen(line);
 	while (line)
@@ -59,7 +59,7 @@ char	**create_map(int fd,  t_mapinfo *mapinfo)
 	}
 	tab_map = malloc(sizeof(char *) * ((mapinfo->line_count + 1)));
 	if (!tab_map)
-		void_error();
+		void_error(tab_map);
 	return (tab_map);
 }
 
@@ -73,7 +73,7 @@ char	**get_map(int fd, char **tab_map, t_mapinfo *mapinfo)
 	if (!tab_map[0])
 	{
 		free_all(tab_map);
-		void_error();
+		void_error(tab_map);
 	}
 	i = 1;
 	while (i < mapinfo->line_count)
@@ -82,7 +82,10 @@ char	**get_map(int fd, char **tab_map, t_mapinfo *mapinfo)
 		i++;
 	}
 	tab_map[i] = NULL;
+	valid_map(tab_map, mapinfo);
 	return (tab_map);
+	//void_error(tab_map);
+//	return (tab_map);
 }
 
 int	valid_map(char **tab_map, t_mapinfo *mapinfo)
@@ -96,6 +99,6 @@ int	valid_map(char **tab_map, t_mapinfo *mapinfo)
 		free_all(tab_map);
 		return (error(3, "Map isn't valid"));
 	}
-	free_all(tab_map);
+//	free_all(tab_map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:51:35 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 16:06:35 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:15:20 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ int	valid_map(char **tab_map, t_mapinfo *mapinfo);
 //errors
 void	free_all(char **tab_map);
 int	error(int n, char *str);
-void	void_error(void);
+void	void_error(char **tab_map);
 
 #endif
