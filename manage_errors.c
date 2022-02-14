@@ -32,7 +32,8 @@ int	error(int n, char *str)
 {
 	write(2, str, ft_strlen(str));
 	write(2, "\n", 1);
-	return (n);
+	errno = n;
+	exit(EXIT_FAILURE);
 }
 
 void	void_error(char **tab_map)

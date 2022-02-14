@@ -30,7 +30,7 @@ int	check_first_last_line(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] != '\n')
+	while (line[i] && line[i] != '\n')
 	{
 		if (line[i] != '1')
 			return (error(1, "Walls should be made of 1"));
@@ -50,7 +50,7 @@ int	check_letters(char **tab_map)
 	while (tab_map[i] != NULL)
 	{
 		j = 0;
-		while (tab_map[i][j] != '\n')
+		while (tab_map[i][j] && tab_map[i][j] != '\n')
 		{
 			if ((tab_map[i][j] != '1' && tab_map[i][j] != '0'
 				&& tab_map[i][j] != 'E' && tab_map[i][j] != 'P'
@@ -83,7 +83,7 @@ int	check_player(char **tab_map)
 	while (tab_map[i] != NULL)
 	{
 		j = 0;
-		while (tab_map[i][j] != '\n')
+		while (tab_map[i][j] && tab_map[i][j] != '\n')
 		{
 			if (tab_map[i][j] == 'P')
 				player++;
@@ -109,7 +109,7 @@ int	check_collect_exit(char **tab_map)
 	while (tab_map[i] != NULL)
 	{
 		j = 0;
-		while (tab_map[i][j] != '\n')
+		while (tab_map[i][j] && tab_map[i][j] != '\n')
 		{
 			if (tab_map[i][j] == 'E')
 				exit++;

@@ -16,7 +16,9 @@ SRCS    = check_map_utils.c \
 	  manage_errors.c \
 	  so_long.c \
 	  parse_map.c \
-	  display.c
+	  display.c \
+	  init_textures.c \
+	  direction.c
 
 
 OBJS    =    ${SRCS:.c=.o}

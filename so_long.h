@@ -13,6 +13,12 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# define FLOOR	"textures/floor.xpm"
+# define WALL	"textures/wall.xpm"
+# define PLAYER	"textures/player.xpm"
+# define COLLECT	"textures/collect.xpm"
+# define EXIT	"textures/exit.xpm"
+
 #include "mlx_linux/mlx.h"
 #include "libft/libft.h"
 #include <stdio.h>
@@ -61,7 +67,6 @@ typedef struct s_combo {
 	int		count;
 }				t_combo;
 
-int	close_map(t_data *data);
 int	create_trgb(int t, int r, int g, int b);
 int	get_t(int trgb);
 int	get_r(int trgb);
@@ -77,7 +82,6 @@ int	check_first_last_line(char *line);
 int	verify_filename(char *mapfile);
 
 //get valid map
-int	map_size(char *mapfile);
 char	**create_map(int fd, t_mapinfo *mapinfo);
 char	**get_map(int fd, char **tab_map, t_mapinfo *mapinfo);
 int	valid_map(char **tab_map, t_mapinfo *mapinfo);
@@ -87,6 +91,22 @@ void	free_all(char **tab_map);
 int	error(int n, char *str);
 void	void_error(char **tab_map);
 
+//init textures
+void	init_txt(t_data *mlx, t_img *txt, char *path);
+void	get_txt(t_data *mlx);
+void	which_txt(char c, t_data mlx, int i, int j);
+
+//display map
+
+void	put_txt(char **tab_map, t_data mlx, t_mapinfo mapinfo);
 void	display_map(char **tab_map, t_mapinfo mapinfo);
+void	close_map(t_data *mlx, char **tab_map);
+int	ft_cross(t_combo *combo);
+
+int	direction(int keycode, t_combo *combo);
+void	move_right(t_combo *combo);
+void	move_up(t_combo *combo);
+void	move_left(t_combo *combo);
+void	move_down(t_combo *combo);
 
 #endif

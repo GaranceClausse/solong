@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	free_mlx(t_data *mlx, char **tab_map)
+void	close_map(t_data *mlx, char **tab_map)
 {
 	if (mlx->mlx)
 	{
@@ -31,13 +31,8 @@ void	free_mlx(t_data *mlx, char **tab_map)
 
 int	ft_cross(t_combo *combo)
 {
-	free_mlx(combo->mlx, combo->map);
+	close_map(combo->mlx, combo->map);
 	return (0);
-}
-
-void	init_txt(t_data *mlx, t_img *txt, char *path)
-{
-	txt->img = mlx_xpm_file_to_image(mlx->mlx, path, &txt->h, &txt->w);
 }
 
 void	put_txt(char **tab_map, t_data mlx, t_mapinfo mapinfo)
@@ -51,7 +46,7 @@ void	put_txt(char **tab_map, t_data mlx, t_mapinfo mapinfo)
 		j = 0;
 		while (j < mapinfo.line_len)
 		{
-			wright_txt(tab_map[i][j], mlx, i, j);
+			which_txt(tab_map[i][j], mlx, i, j);
 			j++;
 		}
 		i++;

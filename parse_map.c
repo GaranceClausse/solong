@@ -12,19 +12,6 @@
 
 #include "so_long.h"
 
-int	close_map(t_data *data)
-{
-	mlx_destroy_image(data->mlx, data->win);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-	free(data->win);
-	mlx_loop_end(data->mlx);
-
-	//mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
-}
-
 void	init_mapinfo(t_mapinfo *mapinfo)
 {
 	mapinfo->line_count = 0;
@@ -55,35 +42,7 @@ int	main(int argc, char **argv)
 	if (fd == -1)
 		return (error(3, "couldn't open the file"));
 	tab_map = get_map(fd, tab_map, &mapinfo);
-		printf("map ok");
+	printf("map ok");
 	display_map(tab_map, mapinfo);
 	free_all(tab_map);
-
-//	{
-		/*start_game(module);
-		hook(module);
-		mlx_loop(module->vars->mlx);
-		t_vars	vars;
-		t_data	img;
-	
-		vars.mlx = mlx_init();
-		vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-		img.img = mlx_new_image(vars.mlx, 1920, 1080);
-		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-		my_mlx_pixel_put(&img, 100, 100, 0x00FF0000);
-		mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-		mlx_hook(vars.win, 2, 1L<<0, close_map, &vars);
-		mlx_loop(vars.mlx);
-		printf("map ok");
-	}
-		else
-		{
-			printf("map not ok");
-			clear_map(module->map);
-			free_ptr((void **)&module);
-			exit(-1);
-		}*/
-
-//	else
-//		return (error(22, "Please run with a map path in the terminal!"));
 }
