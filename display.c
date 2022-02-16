@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:37:50 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 17:56:13 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:57:32 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	display_map(char **tab_map, t_mapinfo mapinfo)
 	t_combo	combo;
 
 	combo.map = tab_map;
+	printf("%s\n", combo.map[0]);
 	combo.mapinfo = &mapinfo;
 	combo.count = 0;
 	mlx.mlx = mlx_init();
@@ -74,5 +75,6 @@ void	display_map(char **tab_map, t_mapinfo mapinfo)
 	combo.mlx = &mlx;
 	mlx_hook(mlx.win, 17, 0L, &ft_cross, &combo);
 	mlx_hook(mlx.win, 2, 1L << 0, direction, &combo);
+	printf("%d\n", combo.mapinfo->x);
 	mlx_loop(mlx.mlx);
 }

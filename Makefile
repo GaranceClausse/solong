@@ -6,7 +6,7 @@
 #    By: gclausse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 11:38:35 by gclausse          #+#    #+#              #
-#    Updated: 2022/02/10 17:50:16 by gclausse         ###   ########.fr        #
+#    Updated: 2022/02/16 16:26:44 by gclausse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME    =    so_long
@@ -18,7 +18,8 @@ SRCS    = check_map_utils.c \
 	  parse_map.c \
 	  display.c \
 	  init_textures.c \
-	  direction.c
+	  direction.c \
+	  win.c
 
 
 OBJS    =    ${SRCS:.c=.o}

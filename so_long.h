@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:51:35 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 17:49:02 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:32:09 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	get_b(int trgb);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 //check map utils
-int	check_collect_exit(char **tab_map);
+int	check_collect_exit(char **tab_map, t_mapinfo *mapinfo);
 int	check_player(char **tab_map);
 int	check_letters(char **tab_map);
 int	check_first_last_line(char *line);
@@ -104,9 +104,12 @@ void	close_map(t_data *mlx, char **tab_map);
 int	ft_cross(t_combo *combo);
 
 int	direction(int keycode, t_combo *combo);
+void	collect_and_erase(t_combo *combo, int x, int y);
 void	move_right(t_combo *combo);
 void	move_up(t_combo *combo);
 void	move_left(t_combo *combo);
 void	move_down(t_combo *combo);
+
+int	win_up(t_combo *combo);
 
 #endif

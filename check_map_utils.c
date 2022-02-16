@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:57:23 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/10 17:00:37 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:31:43 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	check_player(char **tab_map)
 	return (0);
 }
 
-int	check_collect_exit(char **tab_map)
+int	check_collect_exit(char **tab_map, t_mapinfo *mapinfo)
 {
 	int	i;
 	int	j;
@@ -114,7 +114,10 @@ int	check_collect_exit(char **tab_map)
 			if (tab_map[i][j] == 'E')
 				exit++;
 			if (tab_map[i][j] == 'C')
+			{
+				mapinfo->collectible++;
 				collect++;
+			}
 			j++;
 		}
 		i++;

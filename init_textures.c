@@ -3,12 +3,12 @@
 
 void	init_txt(t_data *mlx, t_img *txt, char *path)
 {
-	txt->img = mlx_xpm_file_to_image(mlx->mlx, path, &txt->h, &txt->w);
+	txt->img = mlx_xpm_file_to_image(mlx->mlx, path, &txt->w, &txt->h);
 }
 
 void	get_txt(t_data *mlx)
 {
-	init_txt(mlx, &mlx->txt.floor, FLOOR);
+	init_txt(mlx, &mlx->txt.floor, "textures/floor.xpm");
 	init_txt(mlx, &mlx->txt.wall, WALL);
 	init_txt(mlx, &mlx->txt.player, PLAYER);
 	init_txt(mlx, &mlx->txt.collect, COLLECT);
