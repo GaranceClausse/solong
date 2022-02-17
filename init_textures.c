@@ -8,7 +8,7 @@ void	init_txt(t_data *mlx, t_img *txt, char *path)
 
 void	get_txt(t_data *mlx)
 {
-	init_txt(mlx, &mlx->txt.floor, "textures/floor.xpm");
+	init_txt(mlx, &mlx->txt.floor, FLOOR);
 	init_txt(mlx, &mlx->txt.wall, WALL);
 	init_txt(mlx, &mlx->txt.player, PLAYER);
 	init_txt(mlx, &mlx->txt.collect, COLLECT);
@@ -33,3 +33,23 @@ void	which_txt(char c, t_data mlx, int i, int j)
 		mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.txt.collect.img,
 			(mlx.txt.collect.w * j), (mlx.txt.collect.h * i));
 }
+
+void	put_txt(char **tab_map, t_data mlx, t_mapinfo mapinfo)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < mapinfo.line_count)
+	{
+		j = 0;
+		while (j < mapinfo.line_len)
+		{
+			which_txt(tab_map[i][j], mlx, i, j);
+			j++;
+		}
+		i++;
+	}
+}
+
+

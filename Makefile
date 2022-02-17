@@ -6,15 +6,15 @@
 #    By: gclausse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 11:38:35 by gclausse          #+#    #+#              #
-#    Updated: 2022/02/16 16:26:44 by gclausse         ###   ########.fr        #
+#    Updated: 2022/02/17 13:54:17 by gclausse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME    =    so_long
 
 SRCS    = check_map_utils.c \
+	  check_files.c \
 	  get_valid_map.c \
 	  manage_errors.c \
-	  so_long.c \
 	  parse_map.c \
 	  display.c \
 	  init_textures.c \

@@ -6,24 +6,11 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:57:23 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/16 16:31:43 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:54:00 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	verify_filename(char *mapfile)
-{
-	int	len;
-
-	len = ft_strlen(mapfile);
-	if (len < 5)
-		return (1);
-	if (mapfile[len - 4] == '.' && mapfile[len - 3] == 'b'
-		&& mapfile[len - 2] == 'e' && mapfile[len - 1] == 'r')
-		return (0);
-	return (1);
-}
 
 int	check_first_last_line(char *line)
 {
