@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:26:52 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 16:06:40 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:12:44 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_mapinfo(t_mapinfo *mapinfo)
 
 int	main(int argc, char **argv)
 {
-	int	fd;
+	int			fd;
 	t_mapinfo	mapinfo;
 	char		**tab_map;
 

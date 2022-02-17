@@ -6,13 +6,13 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:02:50 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 16:05:50 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:14:53 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**create_map(int fd,  t_mapinfo *mapinfo)
+char	**create_map(int fd, t_mapinfo *mapinfo)
 {
 	char	**tab_map;
 	char	*line;
@@ -36,8 +36,6 @@ char	**create_map(int fd,  t_mapinfo *mapinfo)
 		void_error(tab_map);
 	return (tab_map);
 }
-
-
 
 char	**get_map(int fd, char **tab_map, t_mapinfo *mapinfo)
 {

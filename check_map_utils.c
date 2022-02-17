@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:57:23 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 16:05:30 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:31:03 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,12 @@ int	check_letters(char **tab_map)
 				&& tab_map[i][j] != 'C' && tab_map[i][j] != '\n')
 				)
 				return (1);
+			if (tab_map[i][0] != '1' || tab_map[i][len - 2] != '1')
+				return (error("Walls should be made of 1"));
 			j++;
 		}
 		if (j != len - 1)
 			return (error("Map should be rectangular"));
-		j = 0;
-		while (tab_map[i][j++] != '\n')
-		{
-			if (tab_map[i][0] != '1' || tab_map[i][len - 2] != '1')
-				return(error("Walls should be made of 1"));
-		}
 		i++;
 	}
 	return (0);
@@ -87,12 +83,10 @@ int	check_collect_exit(char **tab_map, t_mapinfo *mapinfo)
 {
 	int	i;
 	int	j;
-	int	collect;
 	int	exit;
 
 	i = 1;
 	exit = 0;
-	collect = 0;
 	while (tab_map[i] != NULL)
 	{
 		j = 0;
@@ -101,17 +95,14 @@ int	check_collect_exit(char **tab_map, t_mapinfo *mapinfo)
 			if (tab_map[i][j] == 'E')
 				exit++;
 			if (tab_map[i][j] == 'C')
-			{
 				mapinfo->collectible++;
-				collect++;
-			}
 			j++;
 		}
 		i++;
 	}
 	if (exit < 1)
 		return (error("Map should have at least one exit"));
-	if (collect < 1)
+	if (mapinfo->collectible < 1)
 		return (error("Map should have at least one collectable"));
 	return (0);
 }

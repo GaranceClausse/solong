@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   direction.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/17 16:15:25 by gclausse          #+#    #+#             */
+/*   Updated: 2022/02/17 16:18:01 by gclausse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	direction(int keycode, t_combo *combo)
@@ -38,7 +50,7 @@ void	move_right(t_combo *combo)
 		combo->mapinfo->collectible == 0)
 		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y][combo->mapinfo->x + 1] == 'E')
-	       combo->mapinfo->exit = 1;	
+		combo->mapinfo->exit = 1;
 	combo->map[combo->mapinfo->y][combo->mapinfo->x + 1] = 'P';
 	combo->mapinfo->x++;
 	printf("you moved %d times\n", ++combo->count);
@@ -60,7 +72,7 @@ void	move_up(t_combo *combo)
 		combo->mapinfo->collectible == 0)
 		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y - 1][combo->mapinfo->x] == 'E')
-	       combo->mapinfo->exit = 1;	
+		combo->mapinfo->exit = 1;
 	combo->map[combo->mapinfo->y - 1][combo->mapinfo->x] = 'P';
 	combo->mapinfo->y--;
 	printf("you moved %d times\n", ++combo->count);
@@ -76,13 +88,13 @@ void	move_left(t_combo *combo)
 	else
 	{
 		combo->map[combo->mapinfo->y][combo->mapinfo->x] = 'E';
-		combo->mapinfo->exit = 0;	
+		combo->mapinfo->exit = 0;
 	}
 	if (combo->map[combo->mapinfo->y][combo->mapinfo->x - 1] == 'E' &&
 		combo->mapinfo->collectible == 0)
 		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y][combo->mapinfo->x - 1] == 'E')
-	       combo->mapinfo->exit = 1;	
+		combo->mapinfo->exit = 1;
 	combo->map[combo->mapinfo->y][combo->mapinfo->x - 1] = 'P';
 	combo->mapinfo->x--;
 	printf("you moved %d times\n", ++combo->count);
@@ -97,15 +109,14 @@ void	move_down(t_combo *combo)
 		combo->map[combo->mapinfo->y][combo->mapinfo->x] = '0';
 	else
 		combo->map[combo->mapinfo->y][combo->mapinfo->x] = 'E';
-	combo->mapinfo->exit = 0;	
+	combo->mapinfo->exit = 0;
 	if (combo->map[combo->mapinfo->y + 1][combo->mapinfo->x] == 'E' &&
 		combo->mapinfo->collectible == 0)
 		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y + 1][combo->mapinfo->x] == 'E')
-	       combo->mapinfo->exit = 1;	
+		combo->mapinfo->exit = 1;
 	combo->map[combo->mapinfo->y + 1][combo->mapinfo->x] = 'P';
 	combo->mapinfo->y++;
 	printf("you moved %d times\n", ++combo->count);
 	put_txt(combo->map, *combo->mlx, *combo->mapinfo);
 }
-

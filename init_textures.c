@@ -1,5 +1,16 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_textures.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/17 16:13:28 by gclausse          #+#    #+#             */
+/*   Updated: 2022/02/17 16:14:06 by gclausse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "so_long.h"
 
 void	init_txt(t_data *mlx, t_img *txt, char *path)
 {
@@ -51,5 +62,3 @@ void	put_txt(char **tab_map, t_data mlx, t_mapinfo mapinfo)
 		i++;
 	}
 }
-
-
