@@ -38,7 +38,7 @@ void	move_right(t_combo *combo)
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y][combo->mapinfo->x + 1] = 'P';
 	combo->mapinfo->x++;
-	printf("%d\n", combo->count++);
+	printf("you moved %d times\n", ++combo->count);
 	put_txt(combo->map, *combo->mlx, *combo->mapinfo);
 }
 
@@ -60,7 +60,7 @@ void	move_up(t_combo *combo)
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y - 1][combo->mapinfo->x] = 'P';
 	combo->mapinfo->y--;
-	printf("%d\n", combo->count++);
+	printf("you moved %d times\n", ++combo->count);
 	put_txt(combo->map, *combo->mlx, *combo->mapinfo);
 }
 
@@ -82,7 +82,7 @@ void	move_left(t_combo *combo)
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y][combo->mapinfo->x - 1] = 'P';
 	combo->mapinfo->x--;
-	printf("%d\n", combo->count++);
+	printf("you moved %d times\n", ++combo->count);
 	put_txt(combo->map, *combo->mlx, *combo->mapinfo);
 }
 
@@ -102,7 +102,7 @@ void	move_down(t_combo *combo)
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y + 1][combo->mapinfo->x] = 'P';
 	combo->mapinfo->y++;
-	printf("%d\n", combo->count++);
+	printf("you moved %d times\n", ++combo->count);
 	put_txt(combo->map, *combo->mlx, *combo->mapinfo);
 }
 
