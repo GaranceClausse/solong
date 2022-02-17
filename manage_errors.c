@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:05:21 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 13:53:11 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:29:23 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	free_all(char **tab_map)
 
 void	close_map(t_data *mlx, char **tab_map)
 {
+	printf("CONGRATS! Baby is drunk enough!\n");
 	if (mlx->mlx)
 	{
 		mlx_destroy_image(mlx->mlx, mlx->txt.floor.img);
