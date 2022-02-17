@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:57:23 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 13:54:00 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:05:30 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_first_last_line(char *line)
 	while (line[i] && line[i] != '\n')
 	{
 		if (line[i] != '1')
-			return (error(1, "Walls should be made of 1"));
+			return (error("Walls should be made of 1"));
 		i++;
 	}
 	return (0);
@@ -47,12 +47,12 @@ int	check_letters(char **tab_map)
 			j++;
 		}
 		if (j != len - 1)
-			return (error(1, "Map should be rectangular"));
+			return (error("Map should be rectangular"));
 		j = 0;
 		while (tab_map[i][j++] != '\n')
 		{
 			if (tab_map[i][0] != '1' || tab_map[i][len - 2] != '1')
-				return(error(1, "Walls should be made of 1"));
+				return(error("Walls should be made of 1"));
 		}
 		i++;
 	}
@@ -79,7 +79,7 @@ int	check_player(char **tab_map)
 		i++;
 	}
 	if (player != 1)
-		return (error(1, "Map should have one player (and only one)"));
+		return (error("Map should have one player (and only one)"));
 	return (0);
 }
 
@@ -110,8 +110,8 @@ int	check_collect_exit(char **tab_map, t_mapinfo *mapinfo)
 		i++;
 	}
 	if (exit < 1)
-		return (error(1, "Map should have at least one exit"));
+		return (error("Map should have at least one exit"));
 	if (collect < 1)
-		return (error(1, "Map should have at least one collectable"));
+		return (error("Map should have at least one collectable"));
 	return (0);
 }

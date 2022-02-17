@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:05:21 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 15:29:23 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:04:50 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ void	free_all(char **tab_map)
 	}
 }
 
-void	close_map(t_data *mlx, char **tab_map)
+void	close_map(t_data *mlx, t_combo *combo)
 {
-	printf("CONGRATS! Baby is drunk enough!\n");
+	if (combo->mapinfo->collectible == 0)
+		printf("CONGRATS!! Baby is drunk enough!");
 	if (mlx->mlx)
 	{
 		mlx_destroy_image(mlx->mlx, mlx->txt.floor.img);
@@ -42,22 +43,20 @@ void	close_map(t_data *mlx, char **tab_map)
 		mlx_destroy_display(mlx->mlx);
 		free(mlx->mlx);
 	}
-	free_all(tab_map);
+	free_all(combo->map);
 	exit(0);
 }
 
 int	ft_cross(t_combo *combo)
 {
-	close_map(combo->mlx, combo->map);
+	close_map(combo->mlx, combo);
 	return (0);
 }
 
-
-int	error(int n, char *str)
+int	error(char *str)
 {
 	write(2, str, ft_strlen(str));
 	write(2, "\n", 1);
-	errno = n;
 	exit(EXIT_FAILURE);
 }
 

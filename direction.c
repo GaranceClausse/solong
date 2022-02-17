@@ -4,7 +4,10 @@ int	direction(int keycode, t_combo *combo)
 {
 	find_player(combo);
 	if (keycode == 65307)
-		close_map(combo->mlx, combo->map);
+	{
+		printf("Sorry you didn't like the game...");
+		close_map(combo->mlx, combo);
+	}
 	else if (keycode == 100
 		&& combo->map[combo->mapinfo->y][combo->mapinfo->x + 1] != '1')
 		move_right(combo);
@@ -33,7 +36,7 @@ void	move_right(t_combo *combo)
 	}
 	if (combo->map[combo->mapinfo->y][combo->mapinfo->x + 1] == 'E' &&
 		combo->mapinfo->collectible == 0)
-		close_map(combo->mlx, combo->map);
+		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y][combo->mapinfo->x + 1] == 'E')
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y][combo->mapinfo->x + 1] = 'P';
@@ -55,7 +58,7 @@ void	move_up(t_combo *combo)
 	}
 	if (combo->map[combo->mapinfo->y - 1][combo->mapinfo->x] == 'E' &&
 		combo->mapinfo->collectible == 0)
-		close_map(combo->mlx, combo->map);
+		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y - 1][combo->mapinfo->x] == 'E')
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y - 1][combo->mapinfo->x] = 'P';
@@ -77,7 +80,7 @@ void	move_left(t_combo *combo)
 	}
 	if (combo->map[combo->mapinfo->y][combo->mapinfo->x - 1] == 'E' &&
 		combo->mapinfo->collectible == 0)
-		close_map(combo->mlx, combo->map);
+		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y][combo->mapinfo->x - 1] == 'E')
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y][combo->mapinfo->x - 1] = 'P';
@@ -97,7 +100,7 @@ void	move_down(t_combo *combo)
 	combo->mapinfo->exit = 0;	
 	if (combo->map[combo->mapinfo->y + 1][combo->mapinfo->x] == 'E' &&
 		combo->mapinfo->collectible == 0)
-		close_map(combo->mlx, combo->map);
+		close_map(combo->mlx, combo);
 	if (combo->map[combo->mapinfo->y + 1][combo->mapinfo->x] == 'E')
 	       combo->mapinfo->exit = 1;	
 	combo->map[combo->mapinfo->y + 1][combo->mapinfo->x] = 'P';

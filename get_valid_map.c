@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:02:50 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/16 16:32:12 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:05:50 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**create_map(int fd,  t_mapinfo *mapinfo)
 		free(line);
 		void_error(tab_map);
 	}
-	mapinfo->line_len = ft_strlen(line);
+	mapinfo->line_len = ft_strlen(line) - 1;
 	while (line)
 	{
 		free(line);
@@ -69,7 +69,7 @@ int	valid_map(char **tab_map, t_mapinfo *mapinfo)
 		|| check_letters(tab_map) != 0)
 	{
 		free_all(tab_map);
-		return (error(3, "Map isn't valid"));
+		return (error("Map isn't valid"));
 	}
 	return (0);
 }

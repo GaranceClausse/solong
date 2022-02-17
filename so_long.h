@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:51:35 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 13:53:03 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:04:46 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int	valid_map(char **tab_map, t_mapinfo *mapinfo);
 
 //errors
 void	free_all(char **tab_map);
-int	error(int n, char *str);
+int	error(char *str);
 void	void_error(char **tab_map);
-void	close_map(t_data *mlx, char **tab_map);
+void	close_map(t_data *mlx, t_combo *combo);
 int	ft_cross(t_combo *combo);
 
 //init textures
