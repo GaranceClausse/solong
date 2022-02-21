@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:02:50 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/17 16:14:53 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:22:22 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	valid_map(char **tab_map, t_mapinfo *mapinfo)
 		|| check_letters(tab_map) != 0)
 	{
 		free_all(tab_map);
-		return (error("Map isn't valid"));
+		exit (EXIT_FAILURE);
 	}
 	return (0);
 }
