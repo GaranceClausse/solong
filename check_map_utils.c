@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:57:23 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/21 13:19:45 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:23:48 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	check_collect_exit(char **tab_map, t_mapinfo *mapinfo)
 	}
 	if (exit < 1)
 		return (error("Map should have at least one exit"));
-	if (mapinfo->collectible < 1)
+	else if (mapinfo->collectible < 1)
 		return (error("Map should have at least one collectable"));
 	return (0);
 }
