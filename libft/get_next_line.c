@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:22:55 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/21 12:14:05 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:33:27 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static char	*get_one_line(char *cpy)
 		i++;
 	if (cpy[i] == '\n')
 		s2 = malloc(sizeof(char) * (i + 2));
-	else
-		s2 = malloc(sizeof(char) * (i + 1));
 	if (!s2)
 		return (NULL);
 	i = 0;
@@ -53,14 +51,11 @@ static char	*save_cpy(char *cpy)
 	i = 0;
 	while (cpy[i] && cpy[i] != '\n')
 		i++;
-	if ((cpy[i] == '\n' && cpy[i + 1] == '\0') || cpy[i] == '\0')
-	{
-		free(cpy);
-		return (NULL);
-	}
 	str = malloc(sizeof(char) * (ft_strlen(cpy) - i));
-	if (!str)
+	if (!str || ((cpy[i] == '\n' && cpy[i + 1] == '\0') || cpy[i] == '\0'))
 	{
+		if (str)
+			free(str);
 		free(cpy);
 		return (NULL);
 	}
@@ -124,7 +119,6 @@ char	*get_next_line(int fd)
 	cpy = read_file(fd, cpy);
 	if (!cpy)
 		return (NULL);
-	
 	line = get_one_line(cpy);
 	if (!line)
 	{

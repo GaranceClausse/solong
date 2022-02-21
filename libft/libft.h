@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:04:22 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/08 15:54:25 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:29:24 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/wait.h>
 # include <stdarg.h>
 
-#define BUFFER_SIZE 1
+# define BUFFER_SIZE 1
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 #    By: gclausse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/31 11:38:35 by gclausse          #+#    #+#              #
-#    Updated: 2022/02/17 16:20:59 by gclausse         ###   ########.fr        #
+#    Updated: 2022/02/21 13:38:46 by gclausse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME    =    so_long
@@ -24,7 +24,7 @@ SRCS    = check_map_utils.c \
 OBJS    =    ${SRCS:.c=.o}
 
 
-%.o: %.c libft/*.c
+%.o: %.c
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 CC        =    gcc
@@ -63,9 +63,6 @@ fclean:        clean
 
 re:            fclean
 	$(MAKE) all -j
-
-teste: all
-	./$(NAME) "./assets/maps/map_3.ber"
 
 .PHONY:        all clean fclean re
 

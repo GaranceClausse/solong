@@ -6,7 +6,7 @@
 #    By: gclausse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 11:13:42 by gclausse          #+#    #+#              #
-#    Updated: 2022/02/04 14:24:50 by gclausse         ###   ########.fr        #
+#    Updated: 2022/02/21 13:39:49 by gclausse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ ${NAME}: ${OBJ}
 	ar -rc ${NAME} ${OBJ}
 
 clean:
-	rm -f *.o
+	rm -f ${OBJ}
 
 fclean: clean
 	rm -f ${NAME}

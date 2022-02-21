@@ -6,7 +6,7 @@
 /*   By: gclausse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:57:23 by gclausse          #+#    #+#             */
-/*   Updated: 2022/02/21 13:23:48 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:27:43 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_letters(char **tab_map)
 				&& tab_map[i][j] != 'E' && tab_map[i][j] != 'P'
 				&& tab_map[i][j] != 'C' && tab_map[i][j] != '\n')
 				)
-				return (1);
+				return (error("Wrong map"));
 			if (tab_map[i][0] != '1' || tab_map[i][len - 2] != '1')
 				return (error("Walls should be made of 1"));
 			j++;
